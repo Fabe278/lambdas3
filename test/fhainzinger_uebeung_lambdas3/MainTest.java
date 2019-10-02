@@ -66,11 +66,21 @@ public class MainTest {
         assertTrue(richtig);
     }
     
-//    @Test
-//    public void testComparatorAufgabe3(){
-//        Main.main(null);
-//        Main main = new Main();
-//        List<Weapon> weapons = Main.weapons;
-//        main.sortAlphaCombatDamageName();
-//    }
+    @Test
+    public void testComparatorAufgabe3(){
+        Main.main(null);
+        Main main = new Main();
+        List<Weapon> weapons = Main.weapons;
+        main.sortAlphaCombatDamageName();
+        boolean richtig = true;
+        for(int i = 0; i < weapons.size()-1; i++){
+            String test1 = weapons.get(i).getCombatType() + " " + weapons.get(i).getDamageType() + " " + weapons.get(i).getName();
+            String test2 = weapons.get(i+1).getCombatType() + " " + weapons.get(i+1).getDamageType() + " " + weapons.get(i+1).getName();
+            
+            if(test1.compareTo(test2) > 0){
+                richtig = false;
+            }
+        }
+        assertTrue(richtig);
+    }
 }
