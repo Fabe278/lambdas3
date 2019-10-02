@@ -10,5 +10,9 @@ package fhainzinger_uebeung_lambdas3;
  * @author fabia
  */
 public enum DamageType {
-    SLASHING, MISSILE, BLUNT, NONE, PIERCING;
+    SLASHING,
+    MISSILE,
+    BLUNT,
+    PIERCING,
+    NONE;
 }
