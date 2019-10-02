@@ -10,5 +10,6 @@ package fhainzinger_uebeung_lambdas3;
  * @author fabia
  */
 public enum CombatType {
-    MELEE, RANGED;
+    MELEE,
+    RANGED;
 }

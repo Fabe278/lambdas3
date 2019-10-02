@@ -9,7 +9,7 @@ package fhainzinger_uebeung_lambdas3;
  *
  * @author fabia
  */
-public class weapon {
+public class Weapon {
     String name;
     CombatType combatType;
     DamageType damageType;
@@ -18,7 +18,7 @@ public class weapon {
     int strength;
     int value;
 
-    public weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
+    public Weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
         this.name = name;
         this.combatType = combatType;
         this.damageType = damageType;
