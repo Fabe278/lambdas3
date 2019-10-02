@@ -11,5 +11,6 @@ package fhainzinger_uebeung_lambdas3;
  */
 public enum CombatType {
     MELEE,
-    RANGED;
+    RANGED,
+    NONE;
 }

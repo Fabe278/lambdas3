@@ -51,7 +51,8 @@ public class MainTest {
     public void testComparatorDecreaseDamge(){
         Main.main(null);
         Main main = new Main();
-        List<Weapon> weapons = main.readCSV("weapons.csv");
+        List<Weapon> weapons = Main.weapons;
+        main.decreaseDamageSort();
         int big = weapons.get(0).getDamage();
         boolean richtig = true;
         for(int i = 1; i < weapons.size(); i++){
@@ -65,4 +66,11 @@ public class MainTest {
         assertTrue(richtig);
     }
     
+//    @Test
+//    public void testComparatorAufgabe3(){
+//        Main.main(null);
+//        Main main = new Main();
+//        List<Weapon> weapons = Main.weapons;
+//        main.sortAlphaCombatDamageName();
+//    }
 }

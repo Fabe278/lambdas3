@@ -8,6 +8,7 @@ package fhainzinger_uebeung_lambdas3;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -16,29 +17,44 @@ import java.util.List;
  * @author fabia
  */
 public class Main {
-
+    public static List<Weapon> weapons;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Main main = new Main();
-        List<Weapon> weapons = main.readCSV("weapons.csv");
+        weapons = main.readCSV("weapons.csv");
         
-        Comparator<Weapon> decreaseDamage = (Weapon a, Weapon b) -> b.getDamage() - a.getDamage();
-        
-        weapons.sort(decreaseDamage);
-        
-        weapons.forEach(a -> System.out.println(a.getDamage()));
+//        main.decreaseDamageSort();
+//        main.sortAlphaCombatDamageName();
+                
+        for(Weapon e : weapons){
+            System.out.println(" " + e.getCombatType() + " " + e.getDamageType() + " " + e.getName());
+        }
     }
     
+    public void decreaseDamageSort(){
+        Comparator<Weapon> decreaseDamage = (Weapon a, Weapon b) -> b.getDamage() - a.getDamage();
+        weapons.sort(decreaseDamage);
+    }
+    
+    public void sortAlphaCombatDamageName(){
+        Comparator<Weapon> sortAlpha = (Weapon a, Weapon b) -> a.getName().compareTo(b.getName());
+        Comparator<Weapon> sortCombat = (Weapon a, Weapon b) -> a.getCombatType().toString().compareTo(b.getCombatType().toString());
+        Comparator<Weapon> sortDamage = (Weapon a, Weapon b) -> a.getDamageType().toString().compareTo(b.getDamageType().toString());
+        
+        Collections.sort(weapons, sortCombat.thenComparing(sortDamage).thenComparing(sortAlpha));
+    }
     
     public List<Weapon> readCSV(String path){
-        List<Weapon> weapons = new ArrayList<>();
-        Weapon weapon = new Weapon();
+        weapons = new ArrayList<>();
+        
         try(FileReader r = new FileReader(path); BufferedReader br = new BufferedReader(r)){
+            br.readLine();
             String s = br.readLine();
             while(s!=null){
                 String[] parts = s.split(";");
+                Weapon weapon = new Weapon();
                 weapon.setName(parts[0]);
                 weapon.setCombatType(CombatType.valueOf(parts[1]));
                 weapon.setDamageType(DamageType.valueOf(parts[2]));
