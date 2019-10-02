@@ -5,6 +5,8 @@
  */
 package fhainzinger_uebeung_lambdas3;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author fabia
@@ -18,6 +20,10 @@ public class Weapon {
     int strength;
     int value;
 
+    @Override
+    public String toString() {
+        return "Weapon{" + "name=" + name + ", combatType=" + combatType + ", damageType=" + damageType + ", damage=" + damage + ", speed=" + speed + ", strength=" + strength + ", value=" + value + '}';
+    }
 
     public String getName() {
         return name;

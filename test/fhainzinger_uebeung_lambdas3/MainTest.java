@@ -5,7 +5,6 @@
  */
 package fhainzinger_uebeung_lambdas3;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
