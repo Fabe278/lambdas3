@@ -18,15 +18,6 @@ public class Weapon {
     int strength;
     int value;
 
-    public Weapon(String name, CombatType combatType, DamageType damageType, int damage, int speed, int strength, int value) {
-        this.name = name;
-        this.combatType = combatType;
-        this.damageType = damageType;
-        this.damage = damage;
-        this.speed = speed;
-        this.strength = strength;
-        this.value = value;
-    }
 
     public String getName() {
         return name;

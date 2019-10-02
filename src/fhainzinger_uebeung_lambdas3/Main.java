@@ -8,6 +8,7 @@ package fhainzinger_uebeung_lambdas3;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -22,7 +23,14 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         List<Weapon> weapons = main.readCSV("weapons.csv");
+        
+        Comparator<Weapon> decreaseDamage = (Weapon a, Weapon b) -> b.getDamage() - a.getDamage();
+        
+        weapons.sort(decreaseDamage);
+        
+        weapons.forEach(a -> System.out.println(a.getDamage()));
     }
+    
     
     public List<Weapon> readCSV(String path){
         List<Weapon> weapons = new ArrayList<>();
@@ -38,6 +46,7 @@ public class Main {
                 weapon.setSpeed(Integer.parseInt(parts[4]));
                 weapon.setStrength(Integer.parseInt(parts[5]));
                 weapon.setValue(Integer.parseInt(parts[6]));
+                weapons.add(weapon);
                 s = br.readLine();
             }
         }catch(Exception e){
