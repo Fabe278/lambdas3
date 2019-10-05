@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -32,7 +34,6 @@ public class Main {
 
 //        Printable pt = a -> a.forEach(b -> System.out.println(b.toString()));
 //        pt.print(weapons);
-
         Printable pt1 = list -> list.forEach(objekt -> {
             int spaltenlänge = 17;
             int zeilenlänge = spaltenlänge * 7;
@@ -79,19 +80,19 @@ public class Main {
             }
             System.out.print("|");
             System.out.println("");
-            for(int i = 0; i < 6;i++){
-                for(int j = 0; j < spaltenlänge; j++){
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < spaltenlänge; j++) {
                     System.out.print("-");
                 }
                 System.out.print("+");
             }
-            for(int i = 0; i < spaltenlänge; i++){
+            for (int i = 0; i < spaltenlänge; i++) {
                 System.out.print("-");
             }
             System.out.println("");
         }
         );
-        
+
         pt1.print(weapons);
     }
 
@@ -112,25 +113,23 @@ public class Main {
         weapons = new ArrayList<>();
 
         try (FileReader r = new FileReader(path); BufferedReader br = new BufferedReader(r)) {
-            br.readLine();
-            String s = br.readLine();
-            while (s != null) {
-                String[] parts = s.split(";");
-                Weapon weapon = new Weapon();
-                weapon.setName(parts[0]);
-                weapon.setCombatType(CombatType.valueOf(parts[1]));
-                weapon.setDamageType(DamageType.valueOf(parts[2]));
-                weapon.setDamage(Integer.parseInt(parts[3]));
-                weapon.setSpeed(Integer.parseInt(parts[4]));
-                weapon.setStrength(Integer.parseInt(parts[5]));
-                weapon.setValue(Integer.parseInt(parts[6]));
-                weapons.add(weapon);
-                s = br.readLine();
-            }
+            weapons = br.lines().skip(1).map(StringToWeapon).collect(Collectors.toList());
         } catch (Exception e) {
             System.out.println(e);
         }
         return weapons;
     }
 
+    private final Function<String, Weapon> StringToWeapon = (line) -> {
+        String[] parts = line.split(";");
+        Weapon weapon = new Weapon();
+        weapon.setName(parts[0]);
+        weapon.setCombatType(CombatType.valueOf(parts[1]));
+        weapon.setDamageType(DamageType.valueOf(parts[2]));
+        weapon.setDamage(Integer.parseInt(parts[3]));
+        weapon.setSpeed(Integer.parseInt(parts[4]));
+        weapon.setStrength(Integer.parseInt(parts[5]));
+        weapon.setValue(Integer.parseInt(parts[6]));
+        return weapon;
+    };
 }
