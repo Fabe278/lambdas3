@@ -106,6 +106,11 @@ public class Main {
         Comparator<Weapon> sortCombat = (Weapon a, Weapon b) -> a.getCombatType().toString().compareTo(b.getCombatType().toString());
         Comparator<Weapon> sortDamage = (Weapon a, Weapon b) -> a.getDamageType().toString().compareTo(b.getDamageType().toString());
 
+//        Comparator<Weapon> asdf = Comparator.comparing(
+//                Weapon::getCombatType)
+//                .thenComparing((Weapon a, Weapon b) -> a.getDamageType().toString().compareTo(b.getDamageType().toString()))
+//                .thenComparing((Weapon a, Weapon b) -> a.getName().compareTo(b.getName()));
+//        Collections.sort(weapons, asdf);
         Collections.sort(weapons, sortCombat.thenComparing(sortDamage).thenComparing(sortAlpha));
     }
 

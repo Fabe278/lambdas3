@@ -15,10 +15,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args){
         final List<String> names = Arrays.asList("Tim","Andi","Michael");
-//        final Mapper<String,Integer> intMapper = String::length;
-//        System.out.println(intMapper.mapAll(names));
-//        final Mapper<String,String> stringMapper = str -> ">> " + str.toUpperCase() + " << ";
-//        final List<String> uppercaseNames = stringMapper.mapAll(names);
-//        System.out.println(uppercaseNames);
+        final Mapper<String,Integer> intMapper = String::length;
+        System.out.println(intMapper.mapAll(names));
+        final Mapper<String,String> stringMapper = str -> ">> " + str.toUpperCase() + " << ";
+        final List<String> uppercaseNames = stringMapper.mapAll(names);
+        System.out.println(uppercaseNames);
     }
 }

@@ -5,12 +5,19 @@
  */
 package uebung3;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author fabia
  * @param <S>
  * @param <T>
  */
+@FunctionalInterface
 public interface Mapper<S,T> {
-    
+    public T map(S test);
+    public default List<T> mapAll(List<S> test){
+        return test.stream().map(a -> map(a)).collect(Collectors.toList());
+    }
 }

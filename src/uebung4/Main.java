@@ -21,6 +21,13 @@ public class Main {
         final Predicate<String> isShortWord = (a) -> {return a.length()<4;};
         final Predicate<Integer> positiveAndEven = isPositive.and(isEven);
         final Predicate<Integer> positiveAndOdd = isPositive.and(isEven.negate());
-        System.out.println(positiveAndOdd.test(2));
+        System.out.println("Alle wurden mit 2 getestet");
+        System.out.println("Is Even: " + isEven.test(2));
+        System.out.println("Is Positive: " + isPositive.test(2));
+        System.out.println("Number is Zero: " + NumberisNull.test(2));
+        System.out.println("Is Null: " + isNull.test(2));
+        System.out.println("Is Short Word" + isShortWord.test("Hey"));
+        System.out.println("Is Positive and Odd: " + positiveAndOdd.test(2));
+        System.out.println("Is Positive and Even: " + positiveAndEven.test(2));
     }
 }
