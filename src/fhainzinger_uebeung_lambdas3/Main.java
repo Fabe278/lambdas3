@@ -34,8 +34,11 @@ public class Main {
 
 //        Printable pt = a -> a.forEach(b -> System.out.println(b.toString()));
 //        pt.print(weapons);
+        
+        Weapon a = weapons.stream().max(Comparator.comparing(Weapon::getLongestLength)).get();
+        int spaltenlänge = a.getLongestLength();
+        
         Printable pt1 = list -> list.forEach(objekt -> {
-            int spaltenlänge = 17;
             int zeilenlänge = spaltenlänge * 7;
             int lzname = spaltenlänge - objekt.getName().length();
             System.out.print(objekt.getName());
@@ -107,7 +110,7 @@ public class Main {
         Comparator<Weapon> sortDamage = (Weapon a, Weapon b) -> a.getDamageType().toString().compareTo(b.getDamageType().toString());
 
 //        Comparator<Weapon> asdf = Comparator.comparing(
-//                Weapon::getCombatType)
+//                sortCombat)
 //                .thenComparing((Weapon a, Weapon b) -> a.getDamageType().toString().compareTo(b.getDamageType().toString()))
 //                .thenComparing((Weapon a, Weapon b) -> a.getName().compareTo(b.getName()));
 //        Collections.sort(weapons, asdf);

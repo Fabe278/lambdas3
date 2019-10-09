@@ -6,6 +6,8 @@
 package fhainzinger_uebeung_lambdas3;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -81,5 +83,17 @@ public class Weapon {
         this.value = value;
     }
     
+    public int getLongestLength(){
+        List<Integer> weaponlist = new ArrayList<>();
+        weaponlist.add(name.length());
+        weaponlist.add(combatType.toString().length());
+        weaponlist.add(damageType.toString().length());
+        weaponlist.add(String.valueOf(damage).length());
+        weaponlist.add(String.valueOf(speed).length());
+        weaponlist.add(String.valueOf(strength).length());
+        weaponlist.add(String.valueOf(value).length());
+        
+       return weaponlist.stream().max((a,b) -> a -b).get();
+    }
     
 }
